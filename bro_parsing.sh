@@ -42,10 +42,10 @@ cp $path/*.pcap $path/"$now"_file.pcap
 mkdir /root/Desktop/temporary_somedirectory/$now
 cp *.log /root/Desktop/temporary_somedirectory/$now/
 
-rm -rf $path/Niksun_TAI_10_11_somedirectory_Raw.pcap
+rm -rf $path/file_somedirectory_Raw.pcap
 
-cp "$now"_Niksun_TAI_10_11_somedirectory_Raw*.pcap /root/Desktop/temporary_somedirectory/$now/
-cat $path/conn.log | bro-cut id.resp_h | awk -F '.' '$1 != "147" && $2 != "238" {print $1,$2,$3,$4}' | tr " " "." | sort -u | tr "\n" "," > $path/$now-somedirectory-IPs.txt
+cp "$now"_file_somedirectory_Raw*.pcap /root/Desktop/temporary_somedirectory/$now/
+cat $path/conn.log | bro-cut id.resp_h | awk -F '.' '$1 != "123" && $2 != "456" {print $1,$2,$3,$4}' | tr " " "." | sort -u | tr "\n" "," > $path/$now-somedirectory-IPs.txt
 cat $path/http.log | bro-cut host | sort -u | tr "\n" "," > $path/$now-somedirectory-DOMAINNAMES.txt
 
 cp *.txt /root/Desktop/temporary_somedirectory/$now/
