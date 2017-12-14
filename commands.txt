@@ -1,3 +1,9 @@
 #regex example using bro-cut and awk
 cat http.log | bro-cut host uri | awk -F '\t' '$1 ~ /a-z0-9{20}.net/ {print}'
 
+#use ip list to search through pcap
+for i in `cat filelist`; do /usr/bin/tshark -n -t a -Tfields -e ip.src -r $i > a ; /usr/bin/tshark -n -t a -Tfields -e ip.dst -r \
+$i > b ; cat a b | /usr/bin/sort -u > IP/$i ; rm -f a b ; done
+
+#use ip list to search another text file
+for i in ‘cat file.txt’; do grep $i search_string; done
